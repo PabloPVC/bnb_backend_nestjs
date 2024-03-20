@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from '../user.entity';
-import { Profile } from 'src/profile.entity';
-import { MenuUsuario } from 'src/menu_usuario.entity';
-import { Menu } from '../menu.entity';
+import { User } from '../users/entities/user.entity';
+import { Profile } from 'src/users/entities/profile.entity';
+import { MenuUsuario } from 'src/users/entities/menu_usuario.entity';
+import { Menu } from '../users/entities/menu.entity';
 
 @Module({
   imports: [
