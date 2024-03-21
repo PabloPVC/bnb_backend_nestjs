@@ -5,7 +5,7 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
   @ApiProperty({ description: 'the nombre of user' })
-  readonly nombre: string;
+  readonly user: string;
 
   @IsNotEmpty()
   @IsString()

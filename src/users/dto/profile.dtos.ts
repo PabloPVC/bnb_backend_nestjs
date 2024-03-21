@@ -11,11 +11,11 @@ import { ApiProperty, PartialType } from '@nestjs/swagger';
 export class CreateProfileDto {
   @IsNotEmpty()
   @IsString()
-  @ApiProperty({ description: 'El nombre del usuario' })
+  @ApiProperty({ description: 'El nombre del Perfil' })
   readonly nombre: string;
 
   @IsNotEmpty()
-  @ApiProperty({ description: 'El estado del usuario activo/inactivo' })
+  @ApiProperty({ description: 'El estado del Perfil activo/inactivo' })
   readonly estado: boolean;
 }
 

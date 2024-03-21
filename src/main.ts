@@ -5,6 +5,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix('api');
   await app.listen(process.env.port || 3000);
   app.useGlobalPipes(
     new ValidationPipe({
@@ -16,7 +17,6 @@ async function bootstrap() {
     }),
   );
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
-  app.setGlobalPrefix('api');
   const config = new DocumentBuilder()
     .setTitle('Store')
     .setDescription('The Store API description')

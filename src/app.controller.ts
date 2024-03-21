@@ -1,18 +1,15 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { User } from './users/entities/user.entity';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('users')
+  @Get('')
   getAll() {
-    return this.appService.getAll();
-  }
-
-  @Post()
-  createUser(@Body() user: User) {
-    return this.appService.create(user);
+    return {
+      version: 1.0,
+      mensaje: 'app-bnb-postgres',
+    };
   }
 }

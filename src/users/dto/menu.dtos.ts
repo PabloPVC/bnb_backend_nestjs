@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString, IsNumber } from 'class-validator';
-import { ApiProperty, OmitType, PartialType } from '@nestjs/swagger';
+import { ApiProperty, PartialType } from '@nestjs/swagger';
 
 export class CreateMenuDtos {
   @IsNotEmpty()

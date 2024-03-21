@@ -26,7 +26,6 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { ReStartPasswordDto } from '../dto/re_start_password';
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @ApiTags('Users')
