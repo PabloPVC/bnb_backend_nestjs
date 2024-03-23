@@ -3,7 +3,6 @@ import {
   Column,
   PrimaryGeneratedColumn,
   ManyToOne,
-  OneToMany,
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
@@ -11,7 +10,6 @@ import {
 } from 'typeorm';
 import { Profile } from './profile.entity';
 import { Exclude } from 'class-transformer';
-import { MenuUsuario } from './menu_usuario.entity';
 
 @Entity('users')
 export class User {
@@ -37,7 +35,4 @@ export class User {
   @ManyToOne(() => Profile, (profile) => profile.user)
   @JoinColumn({ name: 'profile_id' })
   profile: Profile;
-
-  @OneToMany(() => MenuUsuario, (menu_usuario) => menu_usuario.user)
-  menus: MenuUsuario[];
 }

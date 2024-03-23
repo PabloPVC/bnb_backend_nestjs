@@ -7,20 +7,20 @@ import {
 } from 'typeorm';
 
 import { Menu } from './menu.entity';
-import { User } from './user.entity';
+import { Profile } from './profile.entity';
 
-@Entity('menu_usuario')
-export class MenuUsuario {
+@Entity('menu_profile')
+export class MenuProfile {
   @PrimaryGeneratedColumn('identity', { generatedIdentity: 'ALWAYS' })
   id: number;
-  @ManyToOne(() => Menu, (menu) => menu.menus_users, {
+  @ManyToOne(() => Menu, (menu) => menu.menuProfile, {
     eager: true,
   })
   @JoinColumn({ name: 'menu_id' })
   menu: Menu;
-  @ManyToOne(() => User, (user) => user.menus)
-  @JoinColumn({ name: 'user_id' })
-  user: User;
+  @ManyToOne(() => Profile, (profile) => profile.menuProfile)
+  @JoinColumn({ name: 'profile_id' })
+  profile: Profile;
   @Column()
   estado: boolean;
 }

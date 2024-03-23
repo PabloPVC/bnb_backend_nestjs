@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { Profile } from './profile.entity';
 import { Exclude } from 'class-transformer';
-import { MenuUsuario } from './menu_usuario.entity';
+import { MenuProfile } from './menu_profile.entity';
 
 @Entity('menu')
 export class Menu {
@@ -35,12 +35,8 @@ export class Menu {
   @Column({ type: 'bool', default: true })
   estado: boolean;
 
-  @OneToMany(() => Profile, (profile) => profile.id)
-  @JoinColumn({ name: 'profile_id' })
-  profile: Profile;
-
-  @OneToMany(() => MenuUsuario, (menu_usuario) => menu_usuario.menu)
-  menus_users: MenuUsuario[];
+  @OneToMany(() => MenuProfile, (menu_profile) => menu_profile.menu)
+  menuProfile: MenuProfile[];
 
   @CreateDateColumn({ name: 'created_at' })
   created_at: Date;

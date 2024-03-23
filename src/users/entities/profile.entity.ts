@@ -8,6 +8,7 @@ import {
   DeleteDateColumn,
 } from 'typeorm';
 import { User } from './user.entity';
+import { MenuProfile } from './menu_profile.entity';
 import { Exclude } from 'class-transformer';
 @Entity('profile')
 export class Profile {
@@ -27,4 +28,7 @@ export class Profile {
 
   @OneToMany(() => User, (user) => user.profile)
   user: User[];
+
+  @OneToMany(() => MenuProfile, (menuProfile) => menuProfile.profile)
+  menuProfile: MenuProfile[];
 }

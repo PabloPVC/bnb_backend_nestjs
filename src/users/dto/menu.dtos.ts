@@ -26,10 +26,6 @@ export class CreateMenuDtos {
   @IsString()
   @ApiProperty({ description: 'El estado del menú' })
   estado: boolean;
-
-  @IsNumber()
-  @ApiProperty({ description: 'El codigo del profile' })
-  profile_id: number;
 }
 
 export class UpdateMenuDto extends PartialType(CreateMenuDtos) {}

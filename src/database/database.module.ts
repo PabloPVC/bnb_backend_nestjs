@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../users/entities/user.entity';
 import { Profile } from 'src/users/entities/profile.entity';
-import { MenuUsuario } from 'src/users/entities/menu_usuario.entity';
+import { MenuProfile } from 'src/users/entities/menu_profile.entity';
 import { Menu } from '../users/entities/menu.entity';
 
 @Module({
@@ -14,7 +14,7 @@ import { Menu } from '../users/entities/menu.entity';
       username: 'postgres',
       password: 'ujSlWuMemcUTulzDDFzNKSqUQVrbyTKf',
       database: 'my_store',
-      entities: [User, Profile, Menu, MenuUsuario],
+      entities: [User, Profile, Menu, MenuProfile],
       synchronize: true, // Esto crea automáticamente las tablas en la base de datos
     }),
     TypeOrmModule.forFeature([User]),

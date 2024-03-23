@@ -32,14 +32,14 @@ export class UsersService {
 
   async findAll(): Promise<User[]> {
     return await this.userRepository.find({
-      relations: ['profile'],
+      relations: ['profile', 'profile.menuProfile'],
     });
   }
 
   async findOne(id: number) {
     const user = await this.userRepository.findOne({
       where: { id: id },
-      relations: { profile: true, menus: true },
+      relations: { profile: true },
     });
     if (!user) {
       throw new NotFoundException(`Usuario con id: ${id} no existe`);
@@ -61,7 +61,7 @@ export class UsersService {
   findByEmail(email: string) {
     return this.userRepository.findOne({
       where: { user: email },
-      relations: { profile: true, menus: true },
+      relations: ['profile', 'profile.menuProfile'],
     });
   }
   async update(id: number, payload: UpdateUserDto) {

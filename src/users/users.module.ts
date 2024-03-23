@@ -8,7 +8,7 @@ import { Customer } from './entities/customer.entity';
 import { Profile } from './entities/profile.entity';
 import { OrderDetalle } from './entities/order_detalle.entity';
 import { Menu } from './entities/menu.entity';
-import { MenuUsuario } from './entities/menu_usuario.entity';
+import { MenuProfile } from './entities/menu_profile.entity';
 import { UsersClaves } from './entities/user_clave';
 
 import { OrdesController } from './controllers/ordes.controller';
@@ -46,7 +46,7 @@ import { JwtModule } from '@nestjs/jwt';
       Profile,
       OrderDetalle,
       Menu,
-      MenuUsuario,
+      MenuProfile,
       UsersClaves,
     ]),
   ],
