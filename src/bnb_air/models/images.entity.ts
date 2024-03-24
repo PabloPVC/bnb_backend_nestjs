@@ -8,7 +8,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { House } from './house.model';
+import { House } from './house.entity';
 
 @Entity('image')
 export class Image {

@@ -7,9 +7,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToMany,
 } from 'typeorm';
 import { Profile } from './profile.entity';
 import { Exclude } from 'class-transformer';
+import { House } from 'src/bnb_air/models/house.entity';
 
 @Entity('users')
 export class User {
@@ -36,4 +38,7 @@ export class User {
   @ManyToOne(() => Profile, (profile) => profile.user)
   @JoinColumn({ name: 'profile_id' })
   profile: Profile;
+
+  @OneToMany(() => House, (house) => house.usuario)
+  houses: House[];
 }

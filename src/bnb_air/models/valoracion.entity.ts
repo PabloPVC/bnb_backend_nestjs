@@ -8,7 +8,7 @@ import {
   OneToMany,
 } from 'typeorm';
 
-import { Valoracion_House } from './valoracion_house.model';
+import { Valoracion_House } from './valoracion_house.entity';
 
 @Entity('valoracion')
 export class Valoracion {

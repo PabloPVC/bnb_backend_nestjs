@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Valoracion } from '../../../models/valoracion.model';
+import { Valoracion } from '../../../models/valoracion.entity';
 import {
   CreateValoracionDto,
   UpdateValoracionDto,

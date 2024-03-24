@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { House } from './models/house.model';
-import { Valoracion } from './models/valoracion.model';
-import { Image } from './models/images.model';
-import { LocationOfrece } from './models/location-ofrece.model';
+import { House } from './models/house.entity';
+import { Valoracion } from './models/valoracion.entity';
+import { Image } from './models/images.entity';
+import { LocationOfrece } from './models/location-ofrece.entity';
 import { HouseService } from './services/house/house.service';
 import { HouseController } from './controller/house/house.controller';
-import { Valoracion_House } from './models/valoracion_house.model';
+import { Valoracion_House } from './models/valoracion_house.entity';
 import { ValoracionesService } from './services/valoracion/valoraciones/valoraciones.service';
 import { ValoracionesController } from './controller/valoracion/valoraciones/valoraciones.controller';
 import { ImagesService } from './services/images/images/images.service';

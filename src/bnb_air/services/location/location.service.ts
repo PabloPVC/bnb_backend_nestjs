@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { LocationOfrece } from '../../models/location-ofrece.model';
+import { LocationOfrece } from '../../models/location-ofrece.entity';
 import { CreateLocationDto } from '../../dto/location.tdo';
 @Injectable()
 export class LocationService {

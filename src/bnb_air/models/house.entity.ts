@@ -6,10 +6,13 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
-import { Valoracion_House } from './valoracion_house.model';
-import { Image } from './images.model';
-import { LocationOfrece } from './location-ofrece.model';
+import { Valoracion_House } from './valoracion_house.entity';
+import { Image } from './images.entity';
+import { LocationOfrece } from './location-ofrece.entity';
+import { User } from '../../users/entities/user.entity';
 
 @Entity('house')
 export class House {
@@ -39,6 +42,10 @@ export class House {
 
   @OneToMany(() => LocationOfrece, (location) => location.house)
   locationOfrece: LocationOfrece[];
+
+  @ManyToOne(() => User, (user) => user.houses)
+  @JoinColumn({ name: 'user_id' })
+  usuario: User;
 
   @CreateDateColumn({ name: 'created_at' })
   created_at: Date;

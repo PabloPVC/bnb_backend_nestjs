@@ -2,12 +2,12 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { House } from '../../models/house.model';
-import { Image } from '../../models/images.model';
-import { Valoracion_House } from './../../models/valoracion_house.model';
-import { Valoracion } from '../../models/valoracion.model';
+import { House } from '../../models/house.entity';
+import { Image } from '../../models/images.entity';
+import { Valoracion_House } from '../../models/valoracion_house.entity';
+import { Valoracion } from '../../models/valoracion.entity';
 import { CreateHouseDto } from '../../dto/house.dto';
-import { LocationOfrece } from '../../models/location-ofrece.model';
+import { LocationOfrece } from '../../models/location-ofrece.entity';
 
 @Injectable()
 export class HouseService {
