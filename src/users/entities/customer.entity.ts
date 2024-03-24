@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 
 import { Order } from './../../users/entities/order.entity';
-import { Exclude } from 'class-transformer';
+
 @Entity('customers')
 export class Customer {
   @PrimaryGeneratedColumn('identity', { generatedIdentity: 'ALWAYS' })
@@ -24,9 +24,9 @@ export class Customer {
   created_at: Date;
   @UpdateDateColumn({ name: 'updated_at' })
   updated_at: Date;
-  @Exclude()
-  @DeleteDateColumn()
-  public deletedAt: Date;
+
+  @DeleteDateColumn({ select: false, name: 'delete_at' })
+  public deleted_at: Date;
 
   @OneToMany(() => Order, (order) => order.customer)
   orders: Order[];

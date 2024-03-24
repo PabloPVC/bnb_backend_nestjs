@@ -2,33 +2,35 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
-import { User } from './user.entity';
-import { MenuProfile } from './menu_profile.entity';
+import { House } from './house.model';
 
-@Entity('profile')
-export class Profile {
+@Entity('image')
+export class Image {
   @PrimaryGeneratedColumn('identity', { generatedIdentity: 'ALWAYS' })
   id: number;
   @Column()
-  nombre: string;
+  title: string;
   @Column()
-  estado: boolean;
+  itemImageSrc: string;
+  @Column()
+  thumbmailImageSrc: string;
+  @Column()
+  altSrc: string;
+
   @CreateDateColumn({ name: 'created_at' })
   created_at: Date;
   @UpdateDateColumn({ name: 'updated_at' })
   updated_at: Date;
-
   @DeleteDateColumn({ select: false, name: 'delete_at' })
   public deleted_at: Date;
 
-  @OneToMany(() => User, (user) => user.profile)
-  user: User[];
-
-  @OneToMany(() => MenuProfile, (menuProfile) => menuProfile.profile)
-  menuProfile: MenuProfile[];
+  @ManyToOne(() => House, (house) => house.images)
+  @JoinColumn({ name: 'house_id' })
+  house: House;
 }

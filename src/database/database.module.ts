@@ -1,12 +1,16 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
 import { User } from '../users/entities/user.entity';
-import { Profile } from 'src/users/entities/profile.entity';
-import { MenuProfile } from 'src/users/entities/menu_profile.entity';
-import { Menu } from '../users/entities/menu.entity';
+import { House } from '../bnb_air/models/house.model';
+import { LocationOfrece } from '../bnb_air/models/location-ofrece.model';
+import { Valoracion_House } from '../bnb_air/models/valoracion_house.model';
+import { Valoracion } from '../bnb_air/models/valoracion.model';
+import { Image } from '../bnb_air/models/images.model';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres', // Cambia al tipo de base de datos que estés utilizando
       host: 'viaduct.proxy.rlwy.net',
@@ -14,10 +18,16 @@ import { Menu } from '../users/entities/menu.entity';
       username: 'postgres',
       password: 'ujSlWuMemcUTulzDDFzNKSqUQVrbyTKf',
       database: 'my_store',
-      entities: [User, Profile, Menu, MenuProfile],
       synchronize: true, // Esto crea automáticamente las tablas en la base de datos
     }),
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([
+      User,
+      House,
+      Image,
+      LocationOfrece,
+      Valoracion_House,
+      Valoracion,
+    ]),
   ],
 
   exports: [TypeOrmModule], // Exporta el módulo para que otros módulos puedan usarlo

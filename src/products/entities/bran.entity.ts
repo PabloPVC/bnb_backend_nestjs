@@ -8,7 +8,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { Product } from './product.entity';
-import { Exclude } from 'class-transformer';
+
 @Entity('brans')
 export class Bran {
   @PrimaryGeneratedColumn('identity', { generatedIdentity: 'ALWAYS' })
@@ -21,9 +21,9 @@ export class Bran {
   created_at: Date;
   @UpdateDateColumn({ name: 'updated_at' })
   updated_at: Date;
-  @Exclude()
-  @DeleteDateColumn()
-  public deletedAt: Date;
+
+  @DeleteDateColumn({ select: false, name: 'delete_at' })
+  public deleted_at: Date;
 
   @OneToMany(() => Product, (product) => product.brand)
   products: Product[];

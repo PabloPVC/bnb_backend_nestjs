@@ -9,7 +9,6 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
 } from 'typeorm';
-import { Exclude } from 'class-transformer';
 import { OrderDetalle } from './order_detalle.entity';
 import { Customer } from './customer.entity';
 
@@ -36,9 +35,9 @@ export class Order {
   created_at: Date;
   @UpdateDateColumn({ name: 'updated_at' })
   updated_at: Date;
-  @Exclude()
-  @DeleteDateColumn()
-  public deletedAt: Date;
+
+  @DeleteDateColumn({ select: false, name: 'delete_at' })
+  public deleted_at: Date;
   @OneToMany(() => OrderDetalle, (orderDetalle) => orderDetalle.orden, {
     cascade: true,
   })

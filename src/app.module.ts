@@ -12,6 +12,7 @@ import { enviroments } from 'enviroments';
 import * as Joi from 'joi';
 import config from './config';
 import { ProductsModule } from './products/products.module';
+import { BnbAirModule } from './bnb_air/bnb_air.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
@@ -30,8 +31,9 @@ import { ProductsModule } from './products/products.module';
     AuthModule,
     UsersModule,
     ProductsModule,
+    BnbAirModule,
   ],
-  exports: [UsersModule, ProductsModule, AuthModule],
+  exports: [UsersModule, ProductsModule, AuthModule, BnbAirModule],
   controllers: [AppController],
   providers: [AppService],
 })

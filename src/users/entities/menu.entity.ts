@@ -2,14 +2,11 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
   OneToMany,
 } from 'typeorm';
-import { Profile } from './profile.entity';
-import { Exclude } from 'class-transformer';
 import { MenuProfile } from './menu_profile.entity';
 
 @Entity('menu')
@@ -42,7 +39,7 @@ export class Menu {
   created_at: Date;
   @UpdateDateColumn({ name: 'updated_at' })
   updated_at: Date;
-  @Exclude()
-  @DeleteDateColumn()
-  public deletedAt: Date;
+
+  @DeleteDateColumn({ select: false, name: 'delete_at' })
+  public deleted_at: Date;
 }

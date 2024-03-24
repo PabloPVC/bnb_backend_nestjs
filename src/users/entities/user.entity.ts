@@ -9,7 +9,6 @@ import {
   DeleteDateColumn,
 } from 'typeorm';
 import { Profile } from './profile.entity';
-import { Exclude } from 'class-transformer';
 
 @Entity('users')
 export class User {
@@ -17,8 +16,8 @@ export class User {
   id: number;
   @Column({ type: 'varchar', width: 200, unique: true })
   user: string;
-  @Exclude()
-  @Column({ type: 'varchar', length: 255 })
+
+  @Column({ select: false, type: 'varchar', length: 255 })
   password: string; // encript
   @Column()
   image: string;
@@ -28,8 +27,8 @@ export class User {
   created_at: Date;
   @UpdateDateColumn({ name: 'updated_at' })
   updated_at: Date;
-  @Exclude()
-  @DeleteDateColumn({ name: 'delete_at' })
+
+  @DeleteDateColumn({ select: false, name: 'delete_at' })
   public deleted_at: Date;
 
   @ManyToOne(() => Profile, (profile) => profile.user)

@@ -13,7 +13,6 @@ import {
 import { OrderDetalle } from 'src/users/entities/order_detalle.entity';
 import { Categorie } from './categorie.entity';
 import { Bran } from './bran.entity';
-import { Exclude } from 'class-transformer';
 
 @Entity('products')
 @Index(['precio_unitario', 'stock'])
@@ -37,9 +36,9 @@ export class Product {
   created_at: Date;
   @UpdateDateColumn({ name: 'updated_at' })
   updated_at: Date;
-  @Exclude()
-  @DeleteDateColumn()
-  public deletedAt: Date;
+
+  @DeleteDateColumn({ select: false, name: 'delete_at' })
+  public deleted_at: Date;
 
   @OneToMany(() => OrderDetalle, (orderDetalle) => orderDetalle.product)
   productos: OrderDetalle[];

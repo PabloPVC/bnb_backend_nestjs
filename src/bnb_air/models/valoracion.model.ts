@@ -2,22 +2,28 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToMany,
 } from 'typeorm';
-import { User } from './user.entity';
-import { MenuProfile } from './menu_profile.entity';
 
-@Entity('profile')
-export class Profile {
+import { Valoracion_House } from './valoracion_house.model';
+
+@Entity('valoracion')
+export class Valoracion {
   @PrimaryGeneratedColumn('identity', { generatedIdentity: 'ALWAYS' })
   id: number;
   @Column()
-  nombre: string;
+  title: string;
+  @Column('decimal', { precision: 6, scale: 2 })
+  valor: number;
   @Column()
-  estado: boolean;
+  icon: string;
+
+  @OneToMany(() => Valoracion_House, (valoracion) => valoracion.id)
+  valoracion_house: Valoracion_House[];
+
   @CreateDateColumn({ name: 'created_at' })
   created_at: Date;
   @UpdateDateColumn({ name: 'updated_at' })
@@ -25,10 +31,4 @@ export class Profile {
 
   @DeleteDateColumn({ select: false, name: 'delete_at' })
   public deleted_at: Date;
-
-  @OneToMany(() => User, (user) => user.profile)
-  user: User[];
-
-  @OneToMany(() => MenuProfile, (menuProfile) => menuProfile.profile)
-  menuProfile: MenuProfile[];
 }
