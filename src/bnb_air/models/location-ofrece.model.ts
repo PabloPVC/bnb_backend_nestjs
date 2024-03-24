@@ -21,7 +21,7 @@ export class LocationOfrece {
   created_at: Date;
   @UpdateDateColumn({ name: 'updated_at' })
   updated_at: Date;
-  @DeleteDateColumn({ select: false, name: 'delete_at' })
+  @DeleteDateColumn({ name: 'delete_at' })
   public deleted_at: Date;
 
   @ManyToOne(() => House, (house) => house.locationOfrece)

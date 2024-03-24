@@ -7,6 +7,9 @@ import { LocationOfrece } from '../bnb_air/models/location-ofrece.model';
 import { Valoracion_House } from '../bnb_air/models/valoracion_house.model';
 import { Valoracion } from '../bnb_air/models/valoracion.model';
 import { Image } from '../bnb_air/models/images.model';
+import { Profile } from '../users/entities/profile.entity';
+import { Menu } from '../users/entities/menu.entity';
+import { MenuProfile } from '../users/entities/menu_profile.entity';
 
 @Module({
   imports: [
@@ -18,10 +21,14 @@ import { Image } from '../bnb_air/models/images.model';
       username: 'postgres',
       password: 'ujSlWuMemcUTulzDDFzNKSqUQVrbyTKf',
       database: 'my_store',
+      entities: ['dist/**/*.entity.js'],
       synchronize: true, // Esto crea automáticamente las tablas en la base de datos
     }),
     TypeOrmModule.forFeature([
       User,
+      Profile,
+      Menu,
+      MenuProfile,
       House,
       Image,
       LocationOfrece,

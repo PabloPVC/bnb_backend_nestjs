@@ -17,7 +17,7 @@ export class User {
   @Column({ type: 'varchar', width: 200, unique: true })
   user: string;
 
-  @Column({ select: false, type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 255 })
   password: string; // encript
   @Column()
   image: string;
@@ -28,7 +28,7 @@ export class User {
   @UpdateDateColumn({ name: 'updated_at' })
   updated_at: Date;
 
-  @DeleteDateColumn({ select: false, name: 'delete_at' })
+  @DeleteDateColumn({ name: 'delete_at' })
   public deleted_at: Date;
 
   @ManyToOne(() => Profile, (profile) => profile.user)

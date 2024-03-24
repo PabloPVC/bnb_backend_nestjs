@@ -23,7 +23,7 @@ export class Categorie {
   created_at: Date;
   @UpdateDateColumn({ name: 'updated_at' })
   updated_at: Date;
-  @DeleteDateColumn({ select: false, name: 'delete_at' })
+  @DeleteDateColumn({ name: 'delete_at' })
   public deleted_at: Date;
 
   @OneToMany(() => Product, (product) => product.categorie)
