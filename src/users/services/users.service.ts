@@ -58,8 +58,8 @@ export class UsersService {
     newUser.profile = profile;
     return await this.userRepository.save(newUser);
   }
-  findByEmail(email: string) {
-    return this.userRepository.findOne({
+  async findByEmail(email: string) {
+    return await this.userRepository.findOne({
       where: { user: email },
       relations: ['profile', 'profile.menuProfile'],
     });

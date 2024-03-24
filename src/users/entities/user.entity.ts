@@ -9,6 +9,7 @@ import {
   DeleteDateColumn,
 } from 'typeorm';
 import { Profile } from './profile.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity('users')
 export class User {
@@ -20,6 +21,7 @@ export class User {
   @Column({ type: 'varchar', length: 255 })
   password: string; // encript
   @Column()
+  @Exclude()
   image: string;
   @Column()
   estado: boolean;

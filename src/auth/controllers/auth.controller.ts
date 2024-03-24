@@ -12,11 +12,17 @@ export class AuthController {
   @Post('login')
   login(@Req() req: Request) {
     const user = req.user as User;
+    delete user.password;
     return this.authService.generateJWT(user);
   }
 
   @Post('create_user')
-  create_user(@Body() payload: CreateUserDto) {
-    return this.authService.createUser(payload);
+  async create_user(@Body() payload: CreateUserDto) {
+    const userCreate = await this.authService.createUser(payload);
+    delete userCreate.password;
+    return {
+      access_token: this.authService.crearJWT(userCreate),
+      user: userCreate,
+    };
   }
 }

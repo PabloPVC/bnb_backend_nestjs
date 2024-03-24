@@ -34,6 +34,14 @@ export class AuthService {
     };
   }
 
+  crearJWT(user: User) {
+    const payload: PayloadToken = {
+      profile: user.profile.nombre,
+      sub: user.id,
+    };
+    return this.jwtService.sign(payload);
+  }
+
   createUser(payload: CreateUserDto) {
     return this.usersService.create(payload);
   }
