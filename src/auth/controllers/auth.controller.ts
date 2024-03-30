@@ -9,6 +9,8 @@ import {
   ParseFilePipe,
   MaxFileSizeValidator,
   FileTypeValidator,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
@@ -19,6 +21,8 @@ import { diskStorage } from 'multer';
 import { AuthService } from '../services/auth.service';
 import { User } from './../../users/entities/user.entity';
 import { CreateUserDto } from '../../users/dto/user.dtos';
+import { ReStartPasswordDto } from '../../users/dto/re_start_password';
+import { UpdatePasswordDto } from 'src/users/dto/update_password';
 
 @Controller('auth')
 export class AuthController {
@@ -75,5 +79,41 @@ export class AuthController {
       statusCode: 200,
       data: file.path,
     };
+  }
+
+  @Post('resetearPassword-movil')
+  reseteoPasswordMovil(@Body() body: ReStartPasswordDto) {
+    return this.authService
+      .reseteoPasswordMovil(body)
+      .then(() => {
+        return {
+          statusCode: 201,
+          data: 'Correo de recuperación enviado',
+        };
+      })
+      .catch((error) => {
+        throw new HttpException(
+          `Error no se envio el correo: ${error}`,
+          HttpStatus.BAD_REQUEST,
+        );
+      });
+  }
+  @Post('update-password')
+  updatePassword(@Body() body: UpdatePasswordDto) {
+    console.log('**update-password**');
+    return this.authService
+      .reseteoPasswordUser(body)
+      .then(() => {
+        return {
+          statusCode: 200,
+          data: 'Cambio de password realizado con exíto',
+        };
+      })
+      .catch((error) => {
+        return {
+          statusCode: 500,
+          data: error,
+        };
+      });
   }
 }

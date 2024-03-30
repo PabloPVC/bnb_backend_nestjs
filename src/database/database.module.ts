@@ -10,6 +10,7 @@ import { Image } from '../bnb_air/models/images.entity';
 import { Profile } from '../users/entities/profile.entity';
 import { Menu } from '../users/entities/menu.entity';
 import { MenuProfile } from '../users/entities/menu_profile.entity';
+import { UsersClaves } from '../users/entities/user_clave.entity';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { MenuProfile } from '../users/entities/menu_profile.entity';
       Profile,
       Menu,
       MenuProfile,
+      UsersClaves,
       House,
       Image,
       LocationOfrece,

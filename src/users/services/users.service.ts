@@ -16,7 +16,7 @@ import { UpdatePasswordDto } from '../dto/update_password';
 import { User } from '../entities/user.entity';
 import { Profile } from '../entities/profile.entity';
 import { ReStartPasswordDto } from '../dto/re_start_password';
-import { UsersClaves } from '../entities/user_clave';
+import { UsersClaves } from '../entities/user_clave.entity';
 
 @Injectable()
 export class UsersService {

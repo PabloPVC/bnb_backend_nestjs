@@ -9,7 +9,7 @@ import { Profile } from './entities/profile.entity';
 import { OrderDetalle } from './entities/order_detalle.entity';
 import { Menu } from './entities/menu.entity';
 import { MenuProfile } from './entities/menu_profile.entity';
-import { UsersClaves } from './entities/user_clave';
+import { UsersClaves } from './entities/user_clave.entity';
 
 import { OrdesController } from './controllers/ordes.controller';
 import { UsersController } from './controllers/users.controller';

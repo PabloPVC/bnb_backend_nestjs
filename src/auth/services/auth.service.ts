@@ -6,6 +6,8 @@ import { User } from '../../users/entities/user.entity';
 import { PayloadToken } from '../entities/token.model';
 import { UsersService } from '../../users/services/users.service';
 import { CreateUserDto } from '../../users/dto/user.dtos';
+import { ReStartPasswordDto } from 'src/users/dto/re_start_password';
+import { UpdatePasswordDto } from '../../users/dto/update_password';
 @Injectable()
 export class AuthService {
   constructor(
@@ -44,5 +46,12 @@ export class AuthService {
 
   createUser(payload: CreateUserDto) {
     return this.usersService.create(payload);
+  }
+
+  reseteoPasswordMovil(reStartPassword: ReStartPasswordDto) {
+    return this.usersService.reseteoPasswordMovil(reStartPassword);
+  }
+  reseteoPasswordUser(body: UpdatePasswordDto) {
+    return this.usersService.reseteoPasswordUser(body);
   }
 }

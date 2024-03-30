@@ -4,12 +4,15 @@ import {
   Body,
   HttpException,
   HttpStatus,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
 import { ReStartPasswordDto } from '../dto/re_start_password';
 import { UpdatePasswordDto } from '../dto/update_password';
-
+import { RolesGuard } from '../../auth/guards/roles.guard';
+import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
+@UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('reset-password')
 @ApiTags('reset-password')
 export class ResetPasswordController {

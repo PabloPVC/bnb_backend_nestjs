@@ -8,6 +8,7 @@ import {
   Body,
   Delete,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
 
 import { OrdesService } from '../services/ordes.service';
@@ -18,6 +19,9 @@ import {
   UpdateOrderDto,
 } from '../dto/order.dtos';
 import { ApiTags } from '@nestjs/swagger';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
+@UseGuards(JwtAuthGuard, RolesGuard)
 @ApiTags('Ordes')
 @Controller('ordes')
 export class OrdesController {

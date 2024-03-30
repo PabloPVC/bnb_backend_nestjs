@@ -8,11 +8,14 @@ import {
   Body,
   Delete,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { ProfileService } from '../services/profile.service';
 import { CreateProfileDto, UpdateProfileDto } from '../dto/profile.dtos';
 import { ApiTags } from '@nestjs/swagger';
-
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
+@UseGuards(JwtAuthGuard, RolesGuard)
 @ApiTags('Profiles')
 @Controller('profiles')
 export class ProfileController {

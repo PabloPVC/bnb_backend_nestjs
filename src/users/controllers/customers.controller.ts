@@ -10,11 +10,15 @@ import {
   HttpCode,
   HttpStatus,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
 
 import { CustomersService } from '../services/customers.service';
 import { CreateCustomerDto, UpdateCustomerDto } from '../dto/customer.dtos';
 import { ApiTags } from '@nestjs/swagger';
+import { RolesGuard } from '../../auth/guards/roles.guard';
+import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
+@UseGuards(JwtAuthGuard, RolesGuard)
 @ApiTags('Customers')
 @Controller('customers')
 export class CustomersController {
