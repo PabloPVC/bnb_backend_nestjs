@@ -12,9 +12,10 @@ import { ValoracionesController } from './controller/valoracion/valoraciones/val
 import { ImagesService } from './services/images/images/images.service';
 import { ImageController } from './controller/images/image/image.controller';
 import { LocationService } from './services/location/location.service';
-
+import { UsersModule } from '../users/users.module';
 @Module({
   imports: [
+    UsersModule,
     TypeOrmModule.forFeature([
       House,
       Valoracion,

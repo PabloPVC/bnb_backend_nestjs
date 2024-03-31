@@ -30,7 +30,7 @@ export class CreateHouseDto {
   @ApiProperty({ description: 'the url imagen of house' })
   readonly foto: string;
 
-  @IsNotEmpty()
+  @IsNumber()
   @ApiProperty({ description: 'the status of the house' })
   readonly estado: number;
 
@@ -43,6 +43,10 @@ export class CreateHouseDto {
   @ApiProperty({ description: 'what ofrece the house' })
   @Type(() => CreateLocationDto)
   readonly location: CreateLocationDto[];*/
+
+  @IsNumber()
+  @ApiProperty({ description: 'the user id de dueño of the house' })
+  readonly user_id: number;
 
   @IsNotEmpty()
   @ApiProperty({ description: 'Imagenes of the house' })

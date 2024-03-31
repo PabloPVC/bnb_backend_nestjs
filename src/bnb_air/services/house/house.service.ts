@@ -8,6 +8,7 @@ import { Valoracion_House } from '../../models/valoracion_house.entity';
 import { Valoracion } from '../../models/valoracion.entity';
 import { CreateHouseDto } from '../../dto/house.dto';
 import { LocationOfrece } from '../../models/location-ofrece.entity';
+import { UsersService } from '../../../users/services/users.service';
 
 @Injectable()
 export class HouseService {
@@ -22,6 +23,7 @@ export class HouseService {
     private readonly valoracionRepository: Repository<Valoracion_House>,
     @InjectRepository(Valoracion)
     private readonly valorRepository: Repository<Valoracion>,
+    private userService: UsersService,
   ) {}
 
   async findAll() {
@@ -40,8 +42,13 @@ export class HouseService {
   }
 
   async create(payload: CreateHouseDto) {
-    console.log('***payload****', payload);
+    const { user_id } = payload;
+    const user = await this.userService.findOne(user_id);
+    if (!user) {
+      throw new NotFoundException(`Userd con id: ${user_id} no existe.`);
+    }
     const newHuose = this.houseRepository.create({ ...payload });
+    newHuose.usuario = user;
     const houseSave = await this.houseRepository.save(newHuose);
 
     payload.images.map((item) => {
