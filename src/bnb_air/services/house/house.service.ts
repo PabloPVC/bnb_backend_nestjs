@@ -31,6 +31,15 @@ export class HouseService {
       relations: ['valoraciones', 'images', 'locationOfrece'],
     });
   }
+
+  async findByUserId(userid: number) {
+    const houses = await this.houseRepository.find({
+      relations: ['images'],
+      where: { usuario: { id: userid } },
+    });
+    return houses;
+  }
+
   async findOne(id: number) {
     const house = await this.houseRepository.findOne({
       where: { id: id },

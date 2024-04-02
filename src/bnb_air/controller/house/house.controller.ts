@@ -33,6 +33,12 @@ export class HouseController {
     return this.houseService.findOne(id);
   }
 
+  @Post('userid')
+  @ApiOperation({ summary: 'return one house' })
+  findByUserId(@Body('userid', ParseIntPipe) userid: number) {
+    return this.houseService.findByUserId(userid);
+  }
+
   @Post()
   create(@Body() payload: CreateHouseDto) {
     return this.houseService.create(payload);
