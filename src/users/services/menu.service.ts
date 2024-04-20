@@ -24,6 +24,13 @@ export class MenuService {
     return menu;
   }
 
+  async findPagePadre() {
+    const menus = await this.menuRepository.findOne({
+      where: { id_padre: null },
+    });
+    return menus;
+  }
+
   async create(payload: CreateMenuDtos) {
     const newmenu = this.menuRepository.create({ ...payload });
     return await this.menuRepository.save(newmenu);

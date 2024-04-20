@@ -32,6 +32,11 @@ export class MenuController {
     return this.menuService.findOne(id);
   }
 
+  @Post('findPagePadre')
+  findPagePadre() {
+    return this.menuService.findPagePadre();
+  }
+
   @Post()
   create(@Body() payload: CreateMenuDtos) {
     return this.menuService.create(payload);
