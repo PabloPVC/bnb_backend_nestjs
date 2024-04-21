@@ -25,8 +25,12 @@ export class MenuService {
   }
 
   async findPagePadre() {
-    const menus = await this.menuRepository.findOne({
+    const menus = await this.menuRepository.find({
+      select: ['id', 'label'],
       where: { id_padre: null },
+      order: {
+        id: 'ASC', // "DESC"
+      },
     });
     return menus;
   }
