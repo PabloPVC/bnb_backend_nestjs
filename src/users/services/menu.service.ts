@@ -1,7 +1,7 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateMenuDtos, UpdateMenuDto } from '../dto/menu.dtos';
-import { Repository } from 'typeorm';
+import { IsNull, Repository } from 'typeorm';
 import { Menu } from '../entities/menu.entity';
 
 @Injectable()
@@ -27,7 +27,7 @@ export class MenuService {
   async findPagePadre() {
     const menus = await this.menuRepository.find({
       select: ['id', 'label'],
-      where: { id_padre: null },
+      where: { id_padre: IsNull() },
       order: {
         id: 'ASC', // "DESC"
       },
